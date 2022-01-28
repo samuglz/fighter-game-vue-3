@@ -1,4 +1,5 @@
 import { createStore } from "vuex"
+import fighters from './fighters'
 
 export default createStore({
   state () {
@@ -6,9 +7,7 @@ export default createStore({
       count: 0
     }
   },
-  mutations: {
-    increment (state) {
-      state.count++
-    }
+  modules: {
+    fighters
   }
 })
