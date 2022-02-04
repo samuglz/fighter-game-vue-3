@@ -1,21 +1,24 @@
 <template>
-  <div>{{ characters }}</div>
+  <section class="flex border-2">
+    <GridImage v-for="(img, index) in images" :key="index"/>
+  </section>
 </template>
 
 <script setup lang="ts">
-import { useStore } from 'vuex'
-import { onMounted, computed } from 'vue'
+import { onMounted, ref } from 'vue'
+import useFighers from '../modules/fighter/composables/useFighter'
+import GridImage from '@/components/grid-image/GridImage.vue'
 
-const store = useStore()
+const { characters, getimgCharacters } = useFighers()
+const images = ref([]);
 
-const characters = computed(() => store.getters['fighters/getCharacters'])
-
-onMounted(async () => {
-  console.log(store);
-  await store.dispatch('fighters/fetchCharacters')
+onMounted(() => {
+  images.value = getimgCharacters()
+  //
 })
+
+
 
 </script>
 
-<style scoped>
-</style>
+<style lang="postcss" scoped></style>
