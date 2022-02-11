@@ -1,11 +1,11 @@
 
 <script setup lang="ts">
 import { useStore } from 'vuex'
-import { onMounted } from 'vue';
+import { onBeforeMount } from 'vue';
 
 const store = useStore()
 
-onMounted(async() =>{
+onBeforeMount(async() =>{
   await store.dispatch('fighters/fetchCharacters')
 
 })
